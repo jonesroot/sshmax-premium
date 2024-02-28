@@ -253,7 +253,7 @@ clear
 #echo -e "${BIRed}                       CLOUDVPN  TUNNEL                      ${NC}"
 #echo -e "${BIPurple}╚══════════════════════════════════════════════════════════╝\033[0m${NC}"
 echo -e "${BIYellow}╔═══════════════════════════════════════════════════════════╗${NC}"
-echo -e "${BIYellow}║$NC\033[41m         Welcome To Script Premium CLOUDVPNSTORE           $NC${BIYellow}║$NC"
+echo -e "${BIYellow}║${NC}\033[1;93m         Welcome To Script Premium SSHMAX           $NC${BIYellow}║$NC"
 echo -e "${BIYellow}╚═══════════════════════════════════════════════════════════╝${NC}"
 echo -e "${BIYellow}╔═══════════════════════════════════════════════════════════╗\033[0m${NC}"
 echo -e "${BIYellow}║ Server Uptime       = ${BIWhite}$( uptime -p  | cut -d " " -f 2-10000 ) ${NC}"
