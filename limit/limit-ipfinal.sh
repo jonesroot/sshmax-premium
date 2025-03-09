@@ -1,4 +1,4 @@
-REPO="https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/"
+REPO="https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/"
 print_install "Memasang Service Limit IP"
 wget -q -O /usr/bin/limit-ip "${REPO}limit/limit-ip"
 chmod +x /usr/bin/*
