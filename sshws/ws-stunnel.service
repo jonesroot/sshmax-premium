@@ -1,5 +1,5 @@
 [Unit]
-Description=SSH Over Websocket Python ALVI CELL
+Description=SSH Over Websocket Python By lucifer-tunnel.my.id
 Documentation=https://google.com
 After=network.target nss-lookup.target
 
