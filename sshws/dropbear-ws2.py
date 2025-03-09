@@ -50,7 +50,7 @@ class Server(threading.Thread):
 
     def printLog(self, log):
         self.logLock.acquire()
-        print log
+        print(log)
         self.logLock.release()
 
     def addConn(self, conn):
@@ -95,7 +95,7 @@ class ConnectionHandler(threading.Thread):
             if not self.clientClosed:
                 self.client.shutdown(socket.SHUT_RDWR)
                 self.client.close()
-        except:
+        except Exception:
             pass
         finally:
             self.clientClosed = True
@@ -104,7 +104,7 @@ class ConnectionHandler(threading.Thread):
             if not self.targetClosed:
                 self.target.shutdown(socket.SHUT_RDWR)
                 self.target.close()
-        except:
+        except Exception:
             pass
         finally:
             self.targetClosed = True
@@ -135,13 +135,13 @@ class ConnectionHandler(threading.Thread):
                 else:
                     self.client.send('HTTP/1.1 403 Forbidden!\r\n\r\n')
             else:
-                print '- No X-Real-Host!'
+                print('- No X-Real-Host!')
                 self.client.send('HTTP/1.1 400 NoXRealHost!\r\n\r\n')
 
         except Exception as e:
             self.log += ' - error: ' + e.strerror
             self.server.printLog(self.log)
-	    pass
+            pass
         finally:
             self.close()
             self.server.removeConn(self)
@@ -159,7 +159,7 @@ class ConnectionHandler(threading.Thread):
         if aux == -1:
             return ''
 
-        return head[:aux];
+        return head[:aux]
 
     def connect_target(self, host):
         i = host.find(':')
@@ -199,20 +199,20 @@ class ConnectionHandler(threading.Thread):
                 error = True
             if recv:
                 for in_ in recv:
-		    try:
+                    try:
                         data = in_.recv(BUFLEN)
                         if data:
-			    if in_ is self.target:
-				self.client.send(data)
+                            if in_ is self.target:
+                                self.client.send(data)
                             else:
                                 while data:
                                     byte = self.target.send(data)
                                     data = data[byte:]
 
                             count = 0
-			else:
-			    break
-		    except:
+                        else:
+                            break
+                    except Exception:
                         error = True
                         break
             if count == TIMEOUT:
@@ -222,9 +222,9 @@ class ConnectionHandler(threading.Thread):
 
 
 def print_usage():
-    print 'Usage: proxy.py -p <port>'
-    print '       proxy.py -b <bindAddr> -p <port>'
-    print '       proxy.py -b 0.0.0.0 -p 80'
+    print('Usage: proxy.py -p <port>')
+    print('       proxy.py -b <bindAddr> -p <port>')
+    print('       proxy.py -b 0.0.0.0 -p 80')
 
 def parse_args(argv):
     global LISTENING_ADDR
@@ -246,20 +246,19 @@ def parse_args(argv):
 
 
 def main(host=LISTENING_ADDR, port=LISTENING_PORT):
-    print "\n:-------PythonProxy-------:\n"
-    print "Listening addr: " + LISTENING_ADDR
-    print "Listening port: " + str(LISTENING_PORT) + "\n"
-    print ":-------------------------:\n"
+    print("\n:-------PythonProxy-------:\n")
+    print("Listening addr: " + LISTENING_ADDR)
+    print("Listening port: " + str(LISTENING_PORT) + "\n")
+    print(":-------------------------:\n")
     server = Server(LISTENING_ADDR, LISTENING_PORT)
     server.start()
     while True:
         try:
             time.sleep(2)
         except KeyboardInterrupt:
-            print 'Stopping...'
+            print('Stopping...')
             server.close()
             break
 
-#######    parse_args(sys.argv[1:])
 if __name__ == '__main__':
     main()
