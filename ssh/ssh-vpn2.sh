@@ -20,7 +20,7 @@ commonname=none
 email=adamspx17@gmail.com
 
 # simple password minimal
-curl -sS https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
+curl -sS https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -128,13 +128,13 @@ apt -y install nginx
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/nginx.conf"
 mkdir -p /home/vps/public_html
 /etc/init.d/nginx restart
 
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/newudpgw"
+wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/newudpgw"
 chmod +x /usr/bin/badvpn-udpgw
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
@@ -222,7 +222,7 @@ sudo apt-get install tcpdump -y
 sudo apt-get install dsniff -y
 sudo apt install grepcidr -y
 
-wget https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/DDOS/dosflate.zip
+wget https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/DDOS/dosflate.zip
 unzip dosflate.zip
 
 # Check if the script is executed as root
@@ -412,13 +412,13 @@ exit 0
 # banner /etc/issue.net
 sleep 1
 echo -e "[ ${green}INFO$NC ] Settings banner"
-wget -q -O /etc/issue.net "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/issue.net"
+wget -q -O /etc/issue.net "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/issue.net"
 chmod +x /etc/issue.net
 echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 
 #install bbr dan optimasi kernel
-wget https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+wget https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/bbr.sh && chmod +x bbr.sh && ./bbr.sh
 
 #run_ip
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
@@ -454,69 +454,69 @@ netfilter-persistent reload
 # download script
 cd /usr/bin
 # menu
-wget -O menu "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/menu.sh"
-wget -O menu-trial "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/menu-trial.sh"
-wget -O menu-vmess "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/menu-vmess.sh"
-wget -O menu-vless "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/menu-vless.sh"
-wget -O menu-ssws "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/menu-ssws.sh"
-wget -O running "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/running.sh"
-wget -O clearcache "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/clearcache.sh"
-wget -O menu-trgo "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/menu-trgo.sh"
-wget -O menu-trojan "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/menu-trojan.sh"
-wget -O up "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/up.sh"
-#wget -O slow "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/slow.sh"
-wget -O cf "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/cf.sh"
-wget -O reboot "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/reboot.sh"
-wget -O tcpv "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/tcpv.sh"
-wget -O webm "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/webm"
-wget -O trafik "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/trafik"
-wget -O media "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/media"
+wget -O menu "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/menu.sh"
+wget -O menu-trial "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/menu-trial.sh"
+wget -O menu-vmess "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/menu-vmess.sh"
+wget -O menu-vless "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/menu-vless.sh"
+wget -O menu-ssws "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/menu-ssws.sh"
+wget -O running "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/running.sh"
+wget -O clearcache "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/clearcache.sh"
+wget -O menu-trgo "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/menu-trgo.sh"
+wget -O menu-trojan "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/menu-trojan.sh"
+wget -O up "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/up.sh"
+#wget -O slow "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/slow.sh"
+wget -O cf "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/cf.sh"
+wget -O reboot "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/reboot.sh"
+wget -O tcpv "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/tcpv.sh"
+wget -O webm "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/webm"
+wget -O trafik "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/trafik"
+wget -O media "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/media"
 
 
 # menu ssh ovpn
-wget -O menu-ssh "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/menu-ssh.sh"
-wget -O usernew "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/usernew.sh"
-wget -O trial "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/trial.sh"
-wget -O renew "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/renew.sh"
-wget -O hapus "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/hapus.sh"
-wget -O cek "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/cek.sh"
-wget -O member "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/member.sh"
-wget -O delete "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/delete.sh"
-wget -O autokill "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/autokill.sh"
-wget -O ceklim "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/ceklim.sh"
-wget -O tendang "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/tendang.sh"
+wget -O menu-ssh "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/menu-ssh.sh"
+wget -O usernew "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/usernew.sh"
+wget -O trial "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/trial.sh"
+wget -O renew "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/renew.sh"
+wget -O hapus "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/hapus.sh"
+wget -O cek "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/cek.sh"
+wget -O member "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/member.sh"
+wget -O delete "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/delete.sh"
+wget -O autokill "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/autokill.sh"
+wget -O ceklim "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/ceklim.sh"
+wget -O tendang "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/tendang.sh"
 
 # menu system
-wget -O menu-set "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/menu-set.sh"
-wget -O menu-domain "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/menu-domain.sh"
-wget -O add-host "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/add-host.sh"
-wget -O port-change "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/port/port-change.sh"
-wget -O certv2ray "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/xray/certv2ray.sh"
-wget -O menu-webmin "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/menu-webmin.sh"
-wget -O speedtest "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/speedtest_cli.py"
-wget -O about "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/about.sh"
-wget -O auto-reboot "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/auto-reboot.sh"
-wget -O restart "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/restart.sh"
-wget -O bw "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/menu/bw.sh"
-wget -O user-lock "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/user-lock.sh"
-wget -O user-unlock "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/user-unlock.sh"
+wget -O menu-set "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/menu-set.sh"
+wget -O menu-domain "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/menu-domain.sh"
+wget -O add-host "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/add-host.sh"
+wget -O port-change "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/port/port-change.sh"
+wget -O certv2ray "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/xray/certv2ray.sh"
+wget -O menu-webmin "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/menu-webmin.sh"
+wget -O speedtest "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/speedtest_cli.py"
+wget -O about "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/about.sh"
+wget -O auto-reboot "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/auto-reboot.sh"
+wget -O restart "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/restart.sh"
+wget -O bw "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/menu/bw.sh"
+wget -O user-lock "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/user-lock.sh"
+wget -O user-unlock "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/user-unlock.sh"
 
 # change port
-wget -O port-ssl "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/port/port-ssl.sh"
-wget -O port-ovpn "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/port/port-ovpn.sh"
-wget -O genssl "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/genssl.sh"
+wget -O port-ssl "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/port/port-ssl.sh"
+wget -O port-ovpn "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/port/port-ovpn.sh"
+wget -O genssl "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/genssl.sh"
 
 
-wget -O xp "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/xp.sh"
-wget -O acs-set "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/acs-set.sh"
+wget -O xp "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/xp.sh"
+wget -O acs-set "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/acs-set.sh"
 
-wget -O sshws "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/sshws.sh"
-wget -O status "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/status.sh"
-wget -O menu-backup "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/backup/menu-backup.sh"
-wget -O backup "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/backup/backup.sh"
-wget -O restore "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/backup/restore.sh"
-wget -O jam "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/jam.sh"
-wget -O up "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/up.sh"
+wget -O sshws "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/sshws.sh"
+wget -O status "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/status.sh"
+wget -O menu-backup "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/backup/menu-backup.sh"
+wget -O backup "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/backup/backup.sh"
+wget -O restore "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/backup/restore.sh"
+wget -O jam "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/jam.sh"
+wget -O up "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/up.sh"
 
 chmod +x menu
 chmod +x menu-trial
