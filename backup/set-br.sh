@@ -14,11 +14,11 @@ LIGHT='\033[0;37m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
 # Link Hosting Kalian
-ALVICELL="raw.githubusercontent.com/rendyap100/sshmax-premium/main/backup"
+ALVICELL="raw.githubusercontent.com/jonesroot/sshmax-premium/main/backup"
 
 apt install rclone -y
 printf "q\n" | rclone config
-wget -O /root/.config/rclone/rclone.conf "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/backup/rclone.conf"
+wget -O /root/.config/rclone/rclone.conf "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/backup/rclone.conf"
 git clone  https://github.com/magnific0/wondershaper.git
 cd wondershaper
 make install
@@ -43,11 +43,11 @@ logfile ~/.msmtp.log
 EOF
 chown -R www-data:www-data /etc/msmtprc
 cd /usr/bin
-wget -O autobackup "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/backup/autobackup.sh"
-wget -O backup "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/backup/backup.sh"
-wget -O restore "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/backup/restore.sh"
-wget -O strt "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/backup/strt.sh"
-wget -O limitspeed "https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/backup/limitspeed.sh"
+wget -O autobackup "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/backup/autobackup.sh"
+wget -O backup "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/backup/backup.sh"
+wget -O restore "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/backup/restore.sh"
+wget -O strt "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/backup/strt.sh"
+wget -O limitspeed "https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/backup/limitspeed.sh"
 chmod +x autobackup
 chmod +x backup
 chmod +x restore
