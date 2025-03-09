@@ -123,7 +123,7 @@ mkdir -p /var/lib/SIJA >/dev/null 2>&1
 echo "IP=" >> /var/lib/SIJA/ipvps.conf
 
 echo ""
-wget -q https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/tools.sh;chmod +x tools.sh;./tools.sh
+wget -q https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/tools.sh;chmod +x tools.sh;./tools.sh
 rm tools.sh
 clear
 yellow "Add Domain for vmess/vless/trojan dll"
@@ -148,7 +148,7 @@ echo -e "$green      Install SSH / WS               $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 
 #pasang rc clone ssh ovpn
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -156,7 +156,7 @@ echo -e "$green      Memasang backup server              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/backup/set-br.sh &&  chmod +x set-br.sh && ./set-br.sh
+wget https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/backup/set-br.sh &&  chmod +x set-br.sh && ./set-br.sh
 clear
 #Instal Xray
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -164,8 +164,8 @@ echo -e "$green          Install XRAY              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
-wget https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+wget https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
 
 #Instal slowdns
@@ -174,7 +174,7 @@ echo -e "$green          Install SLDNS              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/SLDNS/slowdns.sh && chmod +x slowdns.sh && ./slowdns.sh
+wget https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/SLDNS/slowdns.sh && chmod +x slowdns.sh && ./slowdns.sh
 clear
 
 #Instal udp
@@ -183,7 +183,7 @@ echo -e "$green          Install UDP              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-#wget https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/tunnel/udp.sh && bash udp.sh
+#wget https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/tunnel/udp.sh && bash udp.sh
 clear
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green       INSTALL SSH UDP             $NC"
@@ -199,10 +199,10 @@ echo -e "$green          Install LIMIT              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/limit3/quota.sh && chmod +x quota.sh && ./quota.sh
-wget https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/limit/limit-ipfinal.sh && chmod +x limit-ipfinal.sh && ./limit-ipfinal.sh
-#wget https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/limit/limit-quotafinal.sh && chmod +x limit-quotafinal.sh && ./limit-quotafinal.sh
-#wget https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
+wget https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/limit3/quota.sh && chmod +x quota.sh && ./quota.sh
+wget https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/limit/limit-ipfinal.sh && chmod +x limit-ipfinal.sh && ./limit-ipfinal.sh
+#wget https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/limit/limit-quotafinal.sh && chmod +x limit-quotafinal.sh && ./limit-quotafinal.sh
+#wget https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
 
 clear
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
