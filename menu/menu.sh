@@ -35,7 +35,7 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/jonesroot/izinvps/refs/heads/ipuk/approved | awk '{print $4}' | grep $MYIP)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/jonesroot/izinvps/refs/heads/ipuk/approved | grep $MYIP | awk '{print $2}')
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
@@ -91,6 +91,12 @@ ICyan='\033[0;96m'        # Cyan
 IWhite='\033[0;97m'       # White
 NC='\e[0m'
 #Download/Upload today
+
+if ! command -v vnstat &> /dev/null; then
+    echo "vnstat tidak ditemukan. Instal dengan 'apt install vnstat'"
+    exit 1
+fi
+
 dtoday="$(vnstat -i eth0 | grep "today" | awk '{print $2" "substr ($3, 1, 1)}')"
 utoday="$(vnstat -i eth0 | grep "today" | awk '{print $5" "substr ($6, 1, 1)}')"
 ttoday="$(vnstat -i eth0 | grep "today" | awk '{print $8" "substr ($9, 1, 1)}')"
@@ -137,7 +143,7 @@ total_ram=` grep "MemTotal: " /proc/meminfo | awk '{ print $2}'`
 totalram=$(($total_ram/1024))
 USAGERAM=$(free -m | awk 'NR==2 {print $3}')
 
-persenmemori="$(echo "scale=2; $usmem*100/$tomem" | bc)"
+persenmemori=$(echo "scale=2; $USAGERAM*100/$totalram" | bc)
 #persencpu=
 persencpu="$(echo "scale=2; $cpu1+$cpu2" | bc)"
 
@@ -213,9 +219,18 @@ read -n 1 -s -r -p "Press any key to back on menu"
 menu
 fi
 }
+if [ ! -d "/root/.acme.sh" ]; then
+    echo "ACME.sh tidak ditemukan, harap instal ulang."
+    exit 1
+fi
 function genssl(){
 clear
 systemctl stop nginx
+if [ -z "$domain" ]; then
+    echo "Domain tidak ditemukan dalam konfigurasi. Harap periksa file /var/lib/SIJA/ipvps.conf"
+    exit 1
+fi
+
 domain=$(cat /var/lib/SIJA/ipvps.conf | cut -d'=' -f2)
 Cek=$(lsof -i:80 | cut -d' ' -f1 | awk 'NR==2 {print $1}')
 if [[ ! -z "$Cek" ]]; then
