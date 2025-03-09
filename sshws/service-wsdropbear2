@@ -1,5 +1,5 @@
 [Unit]
-Description=Websocket-OpenSSH By HideSSH
+Description=Websocket-OpenSSH By lucifer-tunnel.my.id
 Documentation=https://google.com
 After=network.target nss-lookup.target
 
