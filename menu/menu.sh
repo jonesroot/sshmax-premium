@@ -15,7 +15,7 @@ BURIQ () {
     fi
     done
     rm -f /root/tmp
-}
+
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
 Name=$(curl -sS https://raw.githubusercontent.com/jonesroot/izinvps/refs/heads/ipuk/approved | grep $MYIP | awk '{print $2}')
