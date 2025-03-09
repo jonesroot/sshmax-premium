@@ -1,9 +1,7 @@
 #!/bin/bash
-
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/jonesroot/izinvps/refs/heads/ipuk/approved > /root/tmp
+    curl -sS https://raw.githubusercontent.com/jonesroot/izin/main/izin > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
-    biji=$(date +"%Y-%m-%d")
     for user in "${data[@]}"
     do
     exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
@@ -20,7 +18,7 @@ BURIQ () {
 }
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/jonesroot/izinvps/refs/heads/ipuk/approved | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/jonesroot/izin/main/izin | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -37,7 +35,7 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/jonesroot/izinvps/refs/heads/ipuk/approved | grep $MYIP | awk '{print $2}')
+    IZIN=$(curl -sS https://raw.githubusercontent.com/jonesroot/izin/main/izin | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
@@ -55,7 +53,7 @@ PERMISSION
 if [ "$res" = "Expired" ]; then
 Exp="\e[36mExpired\033[0m"
 else
-Exp=$(curl -sS https://raw.githubusercontent.com/jonesroot/izinvps/refs/heads/ipuk/approved | grep $MYIP | awk '{print $3}')
+Exp=$(curl -sS https://raw.githubusercontent.com/jonesroot/izin/main/izin | grep $MYIP | awk '{print $3}')
 fi
 
 # =========================================
@@ -93,12 +91,6 @@ ICyan='\033[0;96m'        # Cyan
 IWhite='\033[0;97m'       # White
 NC='\e[0m'
 #Download/Upload today
-
-if ! command -v vnstat &> /dev/null; then
-    echo "vnstat tidak ditemukan. Instal dengan 'apt install vnstat'"
-    exit 1
-fi
-
 dtoday="$(vnstat -i eth0 | grep "today" | awk '{print $2" "substr ($3, 1, 1)}')"
 utoday="$(vnstat -i eth0 | grep "today" | awk '{print $5" "substr ($6, 1, 1)}')"
 ttoday="$(vnstat -i eth0 | grep "today" | awk '{print $8" "substr ($9, 1, 1)}')"
@@ -145,7 +137,7 @@ total_ram=` grep "MemTotal: " /proc/meminfo | awk '{ print $2}'`
 totalram=$(($total_ram/1024))
 USAGERAM=$(free -m | awk 'NR==2 {print $3}')
 
-persenmemori=$(echo "scale=2; $USAGERAM*100/$totalram" | bc)
+persenmemori="$(echo "scale=2; $usmem*100/$tomem" | bc)"
 #persencpu=
 persencpu="$(echo "scale=2; $cpu1+$cpu2" | bc)"
 
@@ -221,56 +213,9 @@ read -n 1 -s -r -p "Press any key to back on menu"
 menu
 fi
 }
-if [ ! -d "/root/.acme.sh" ]; then
-    echo "ACME.sh tidak ditemukan, harap instal ulang."
-    exit 1
-fi
 function genssl(){
 clear
 systemctl stop nginx
-if [ -z "$domain" ]; then
-    echo "Domain tidak ditemukan dalam konfigurasi. Harap periksa file /var/lib/SIJA/ipvps.conf"
-    exit 1
-fi
-
-
-genssl(){
-    clear
-    systemctl stop nginx
-    domain=$(cat /var/lib/SIJA/ipvps.conf | cut -d'=' -f2)  # Memastikan variabel domain didefinisikan
-    if [ -z "$domain" ]; then
-        echo "Domain tidak ditemukan dalam konfigurasi. Harap periksa file /var/lib/SIJA/ipvps.conf"
-        exit 1
-    fi
-
-    Cek=$(lsof -i:80 | cut -d' ' -f1 | awk 'NR==2 {print $1}')
-    if [[ ! -z "$Cek" ]]; then
-        sleep 1
-        echo -e "[ ${red}WARNING${NC} ] Detected port 80 used by $Cek " 
-        systemctl stop $Cek
-        sleep 2
-        echo -e "[ ${green}INFO${NC} ] Processing to stop $Cek " 
-        sleep 1
-    fi
-    echo -e "[ ${green}INFO${NC} ] Starting renew cert... " 
-    sleep 2
-    /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
-    /root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
-    ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
-    echo -e "[ ${green}INFO${NC} ] Renew cert done... " 
-    sleep 2
-    echo -e "[ ${green}INFO${NC} ] Starting service $Cek " 
-    sleep 2
-    echo $domain > /etc/xray/domain
-    systemctl restart xray
-    systemctl restart nginx
-    echo -e "[ ${green}INFO${NC} ] All finished... " 
-    sleep 0.5
-    echo ""
-    read -n 1 -s -r -p "Press any key to back on menu"
-    menu
-}
-
 domain=$(cat /var/lib/SIJA/ipvps.conf | cut -d'=' -f2)
 Cek=$(lsof -i:80 | cut -d' ' -f1 | awk 'NR==2 {print $1}')
 if [[ ! -z "$Cek" ]]; then
