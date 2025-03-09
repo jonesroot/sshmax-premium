@@ -1,4 +1,4 @@
-REPO="https://raw.githubusercontent.com/rendyap100/sshmax-premium/main/"
+REPO="https://raw.githubusercontent.com/jonesroot/sshmax-premium/main/"
 print_install "Memasang Service Limit Quota"
 #wget -q -O /usr/local/sbin/quota "${REPO}limit/quota"
 wget -q -O /usr/local/sbin/quota "${REPO}limit/quota2"
